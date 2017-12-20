@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { User } from '../user';
-import { USERS } from '../mock-users';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,22 +9,31 @@ import { UserService } from '../user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
   users: User[];
-  selectedUser: User;
 
-  onSelect(user: User): void {
-    this.selectedUser = user;
-  }
   constructor(private userService: UserService) { }
+
+  ngOnInit() {
+    this.getUsers();
+  }
 
   getUsers(): void {
     this.userService.getUsers()
       .subscribe(users => this.users = users);
   }
 
-  ngOnInit() {
-    this.getUsers();
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.userService.addUser({ name } as User)
+      .subscribe(user => {
+        this.users.push(user);
+      });
+  }
+
+  delete(user: User): void {
+    this.users = this.users.filter(u => u !== user);
+    this.userService.deleteUser(user).subscribe();
   }
 
 }
