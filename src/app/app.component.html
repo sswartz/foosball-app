@@ -1,7 +1,11 @@
 <h1> {{ title }} </h1>
-<nav>
-  <a routerLink="dashboard">Dashboard</a>
-  <a routerLink="users">Users</a>
-</nav>
-<router-outlet></router-outlet>
+<!-- <mat-toolbar>
+  <mat-toolbar-row> -->
+    <nav>
+      <a class="mat-display-1" routerLink="dashboard">Dashboard</a>
+      <a routerLink="users">Users</a>
+    </nav>
+  <!-- </mat-toolbar-row>
+</mat-toolbar> -->
+<router-outlet class="mat-typography"></router-outlet>
 <app-messages></app-messages>
