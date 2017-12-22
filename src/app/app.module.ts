@@ -2,28 +2,27 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from '@app/core';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
-import { AppRoutingModule } from './app-routing.module';
+import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
-import { UsersComponent } from './users/users.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserSearchComponent } from './user-search/user-search.component';
-import { UserService } from './user.service';
-import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
+    routing,
     HttpClientModule,
+    BrowserAnimationsModule,
+    CoreModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -34,13 +33,10 @@ import { MessagesComponent } from './messages/messages.component';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
-    UsersComponent,
-    UserDetailComponent,
     MessagesComponent,
-    UserSearchComponent
+    DashboardComponent,
   ],
-  providers: [ UserService, MessageService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
