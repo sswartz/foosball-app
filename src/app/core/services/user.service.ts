@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from '@app/core';
+import { User } from '../classes/user';
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -19,7 +19,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService
+  ) { }
 
   /** GET users from the server */
   getUsers(): Observable<User[]> {

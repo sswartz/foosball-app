@@ -7,8 +7,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   {path: '', component: UsersComponent},
-  {path: 'user-detail', component: UserDetailComponent},
-  {path: 'user-search', component: UserSearchComponent},
+  {path: 'detail/:id', component: UserDetailComponent},
+  {path: 'search', component: UserSearchComponent},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

@@ -14,6 +14,10 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: 'Ted Cogan' },
       { id: 20, name: 'Sarah Votaw' }
     ];
-    return {users};
+    const glossary = [
+      { id: 1, name: 'Super Move', description: 'Shooting a clear ball attempt right back at your opponent'},
+      { id: 2, name: 'Tip-tap', description: 'Receiving a pass from the midfield with the wing, a quick pass to the center and a shot'}
+    ];
+    return {users, glossary};
   }
 }

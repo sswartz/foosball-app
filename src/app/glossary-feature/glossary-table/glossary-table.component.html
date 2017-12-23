@@ -7,10 +7,10 @@
 
     <mat-table #table [dataSource]="dataSource">
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
 
       <!-- Name Column -->

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { GlossaryService } from '@app/core';
 
 @Component({
   selector: 'app-glossary-table',
@@ -7,22 +8,30 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./glossary-table.component.scss']
 })
 export class GlossaryTableComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'description'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns = ['id', 'name', 'description'];
+  dataSource;
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor() { }
+
+  constructor(private glossaryService: GlossaryService) { }
 
   ngOnInit() {
+    this.getGlossary();
+  }
+
+  getGlossary(): void {
+    this.glossaryService.getGlossary()
+      .subscribe(glossary => this.dataSource = new MatTableDataSource(glossary));
   }
 
 }
 
 export interface Element {
+  id: number;
   name: string;
-  position: number;
   description: string;
 }
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Tip-Tap', description: 'Receiving a pass from the midfield with the wing, a quick pass to the center and a shot' },
-  {position: 2, name: 'Super Move', description: 'Shooting a clear ball attempt right back at your opponent'}
+  {id: 1, name: 'Tip-Tap', description: 'Receiving a pass from the midfield with the wing, a quick pass to the center and a shot' },
+  {id: 2, name: 'Super Move', description: 'Shooting a clear ball attempt right back at your opponent'}
 ];
