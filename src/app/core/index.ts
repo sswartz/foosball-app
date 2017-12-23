@@ -8,3 +8,4 @@ export * from './services/glossary.service';
 /** CLASSES */
 export * from './classes/glossary';
 export * from './classes/user';
+export * from './classes/tile';

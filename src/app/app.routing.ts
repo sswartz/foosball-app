@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'users', loadChildren: './user-feature/user-feature.module#UserFeatureModule'},
   {path: 'glossary', loadChildren: './glossary-feature/glossary-feature.module#GlossaryFeatureModule'},
+  {path: 'team-colors', loadChildren: './team-colors/team-colors.module#TeamColorsModule'},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
