@@ -9,3 +9,5 @@ export * from './services/glossary.service';
 export * from './classes/glossary';
 export * from './classes/user';
 export * from './classes/tile';
+export * from './classes/color-palette';
+export * from './classes/color-palette-row';

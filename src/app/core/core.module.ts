@@ -11,6 +11,7 @@ import { GlossaryService } from './services/glossary.service';
 /*** my own custom classes */
 import { User } from './classes/user';
 import { Glossary } from './classes/glossary';
+import { ColorPalette } from './classes/color-palette';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { Glossary } from './classes/glossary';
     GlossaryService,
     User,
     Glossary,
+    ColorPalette,
   ]
 })
 

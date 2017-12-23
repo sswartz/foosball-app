@@ -1,14 +1,16 @@
 <p>
   team-row works!
 </p>
-<div
-  fxLayout
-  fxLayout.xs="row"
-  fxLayoutAlign="center"
-  fxLayoutGap="10px"
-  fxLayoutGap.xs="0">
-  <div fxFlex="20%">Title</div>
-  <div class="test" fxFlex="80%">
-    <app-color-grid [tiles]="myTiles"></app-color-grid>
+<div class="feature-container">
+  <div
+    fxLayout = "column"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="0">
+    <div fxFlex="80%" fxFlexOffset="10%">{{title}}</div>
+    <div class="test" fxFlex="80%" fxFlexOffset="100px">
+      <app-color-grid [tiles]="myTiles"></app-color-grid>
+    </div>
   </div>
 </div>

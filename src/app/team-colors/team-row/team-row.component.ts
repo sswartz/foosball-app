@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ColorGridComponent } from '../color-grid/color-grid.component';
 import { Tile } from '@app/core';
+import { ColorPalette } from '@app/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
@@ -9,11 +10,32 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   styleUrls: ['./team-row.component.scss']
 })
 export class TeamRowComponent implements OnInit {
-  myTiles = TILES;
+
+  @Input() colorPalette: ColorPalette;
+  myTiles: Tile[];
+  title: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.myTiles = [];
+    this.setTileColors();
+    this.setPaletteTitle();
+  }
+  setTileColors(): void {
+    for (let i = 0; i < 4; i++) {
+      const tile: Tile = {
+        color: this.colorPalette.colors[i],
+        text: '',
+        cols: 1,
+        rows: 1
+       };
+       this.myTiles.push(tile);
+    }
+  }
+
+  setPaletteTitle(): void {
+    this.title = this.colorPalette.title;
   }
 
 }

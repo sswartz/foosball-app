@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatGridListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TeamColorsListComponent } from './team-colors-list/team-colors-list.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     routing,
     FlexLayoutModule,
   ],
-  declarations: [ColorGridComponent, TeamRowComponent]
+  declarations: [ColorGridComponent, TeamRowComponent, TeamColorsListComponent]
 })
 export class TeamColorsModule { }
