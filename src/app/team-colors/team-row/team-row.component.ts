@@ -14,6 +14,7 @@ export class TeamRowComponent implements OnInit {
   @Input() colorPalette: ColorPalette;
   myTiles: Tile[];
   title: string;
+  remoteNumber: number;
 
   constructor() { }
 
@@ -23,7 +24,8 @@ export class TeamRowComponent implements OnInit {
     this.setPaletteTitle();
   }
   setTileColors(): void {
-    for (let i = 0; i < 4; i++) {
+    // TODO: refactor to include constant
+    for (let i = 0; i < 16; i++) {
       const tile: Tile = {
         color: this.colorPalette.colors[i],
         text: '',
@@ -36,6 +38,7 @@ export class TeamRowComponent implements OnInit {
 
   setPaletteTitle(): void {
     this.title = this.colorPalette.title;
+    this.remoteNumber = this.colorPalette.remoteNumber;
   }
 
 }

@@ -1,13 +1,25 @@
-<h1> {{ title }} </h1>
-<!-- <mat-toolbar>
-  <mat-toolbar-row> -->
-    <nav>
-      <a routerLink="dashboard">Dashboard</a>
-      <a routerLink="users">Users</a>
-      <a routerLink="glossary">Glossary</a>
-      <a routerLink="team-colors">Team Colors</a>
-    </nav>
-  <!-- </mat-toolbar-row>
-</mat-toolbar> -->
-<router-outlet class="mat-typography"></router-outlet>
-<app-messages></app-messages>
+<div class="app">
+  <div class="header"
+  fxLayout="row"
+  fxLayoutAlign="center" >
+    <div class="blue-header"
+    fxFlex="50%" >
+      <h1 class="white header-font"> {{ title1 }} </h1>
+    </div>
+    <div class="orange-header"
+    fxFlex="50%" >
+      <h1 class="white header-font"> {{ title2 }} </h1>
+    </div>
+  </div>
+
+  <nav class="banner-nav"
+    fxLayout = "row"
+    fxLayoutAlign="center">
+    <a *ngFor="let n of navList" class="banner-link" [class.active]="isActive(n)" (click)="select(n)" fxFlex="25%" routerLink="{{n.link}}">{{n.name}}</a>
+  </nav>
+
+  <div class="content">
+    <router-outlet class="mat-typography"></router-outlet>
+    <app-messages></app-messages>
+  </div>
+</div>

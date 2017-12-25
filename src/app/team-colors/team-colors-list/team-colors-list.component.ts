@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ColorPalette } from '@app/core';
+
+import { ColorPaletteService } from '@app/core';
 
 @Component({
   selector: 'app-team-colors-list',
@@ -9,25 +12,30 @@ import { ColorPalette } from '@app/core';
 export class TeamColorsListComponent implements OnInit {
 
   myColorPalettes: ColorPalette[];
-  constructor() { }
+  myTabs: [ColorPalette[]];
+
+  constructor(private colorPaletteService: ColorPaletteService) { }
 
   ngOnInit() {
+    this.myTabs = [[], []];
     this.setColorPalettes();
   }
 
   setColorPalettes(): void {
-    this.myColorPalettes = COLORS;
+    this.colorPaletteService.getColorPalettes()
+      .subscribe(colorPalettes => {
+        this.myColorPalettes = colorPalettes;
+        for (let i = 0; i < this.myColorPalettes.length; i++) {
+          if (this.myColorPalettes[i].page === 1) {
+            this.myTabs[0].push(this.myColorPalettes[i]);
+          } else {
+            this.myTabs[1].push(this.myColorPalettes[i]);
+          }
+        }
+       }
+      );
+
   }
 
 }
-const COLORS: ColorPalette[] = [
-  {
-    title: 'Test Palette',
-    colors: ['#CD5C5C', '#F08080', '#FA8072', '#E9967A']
-  },
-  {
-    title: 'Test Palette 2',
-    colors: ['#9B29FF', '#FF29F8', '#FF298D', '#FF3029']
-  }
-];
 

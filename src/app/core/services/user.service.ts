@@ -50,7 +50,7 @@ export class UserService {
     const url = `${this.usersUrl}/${id}`;
     return this.http.get<User>(url).pipe(
       tap(_ => this.log(`fetched user id=${id}`)),
-      catchError(this.handleError<User>(`getUSer id=${id}`))
+      catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 

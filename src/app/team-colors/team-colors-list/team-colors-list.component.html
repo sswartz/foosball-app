@@ -1,6 +1,8 @@
-<p>
-  team-colors-list works!
-</p>
-<div *ngFor="let colorPalette of myColorPalettes">
-  <app-team-row [colorPalette]="colorPalette"></app-team-row>
-</div>
+<h3 class="centered">Team Colors List </h3>
+<mat-tab-group>
+  <mat-tab *ngFor="let colorPaletteList of myTabs; let i = index" label="Page {{i+1}}">
+    <div *ngFor="let colorPalette of colorPaletteList">
+      <app-team-row [colorPalette]="colorPalette"></app-team-row>
+    </div>
+  </mat-tab>
+</mat-tab-group>

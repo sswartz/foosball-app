@@ -1,5 +1,4 @@
 <div *ngIf="user">
-
   <h2> {{user.name | uppercase}} Details</h2>
   <div><span>id: </span> {{user.id}}</div>
   <div>
@@ -10,4 +9,13 @@
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
 
+  <div class="games-played-container"
+    fxLayout="row"
+    fxLayoutAlign="center" >
+    <div class="player-info" *ngFor="let n of playerInfo" fxFlex="20%">
+      <div class="player-info-title">{{n.title}}</div>
+      <div>{{n.value}}</div>
+    </div>
+  </div>
+  <app-match-list [user]="user" [allUsers]="users"></app-match-list>
 </div>

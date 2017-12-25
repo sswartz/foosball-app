@@ -5,33 +5,34 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Glossary } from '../classes/glossary';
+import { ColorPalette } from '../classes/color-palette';
 import { MessageService } from './message.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
 };
 
 @Injectable()
-export class GlossaryService {
+export class ColorPaletteService {
 
-  private glossaryUrl = 'api/glossary';
+  private colorPaletteUrl = 'api/colorPalette';
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) { }
 
-  /** GET glossary from the server */
-  getGlossary(): Observable<Glossary[]> {
-    this.messageService.add('GlossaryService: fetched glossary');
-    return this.http.get<Glossary[]>(this.glossaryUrl)
+  /** GET color palettes from the server */
+  getColorPalettes(): Observable<ColorPalette[]> {
+    this.messageService.add('ColorPaletteService: fetched color palettes');
+    return this.http.get<ColorPalette[]>(this.colorPaletteUrl)
       .pipe(
-        tap(glossary => this.log(`fetched glossary`)),
-        catchError(this.handleError('getGlossary', []))
+        tap(colorPalette => this.log(`fetched color palettes`)),
+        catchError(this.handleError('getColorPalettes', []))
       );
   }
-  /**
+
+   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
@@ -53,7 +54,6 @@ export class GlossaryService {
 
   /** Log a User Service message with the Message Service */
   private log(message: string) {
-    this.messageService.add('GlossaryService: ' + message);
+    this.messageService.add('ColorPaletteService: ' + message);
   }
-
 }

@@ -12,7 +12,6 @@ export class GlossaryTableComponent implements OnInit {
   dataSource;
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-
   constructor(private glossaryService: GlossaryService) { }
 
   ngOnInit() {

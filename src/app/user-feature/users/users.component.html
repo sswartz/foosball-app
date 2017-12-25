@@ -9,8 +9,46 @@
     add
   </button>
 </div>
+<div class="glossary-container mat-elevation-z8">
+    <!-- <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div> -->
 
-<ul class="users">
+    <mat-table #table [dataSource]="dataSource">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Wins Column -->
+      <ng-container matColumnDef="wins">
+        <mat-header-cell *matHeaderCellDef> Wins </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.wins}} </mat-cell>
+      </ng-container>
+
+      <!-- Losses Column -->
+      <ng-container matColumnDef="losses">
+        <mat-header-cell *matHeaderCellDef> Losses </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.losses}} </mat-cell>
+      </ng-container>
+
+      <!-- Season Wins Column -->
+      <ng-container matColumnDef="seasonWins">
+        <mat-header-cell *matHeaderCellDef> Season Wins </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.seasonWins}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row class="user-row" *matRowDef="let row; columns: displayedColumns;" routerLink="detail/{{row.id}}"></mat-row>
+    </mat-table>
+  </div>
+
+
+<!-- <ul class="users">
   <li *ngFor="let user of users">
     <a routerLink="detail/{{user.id}}">
       <span class="badge">{{user.id}}</span> {{user.name}}
@@ -18,5 +56,5 @@
     <button class="delete" title="delete user"
     (click)="delete(user)">x</button>
   </li>
-</ul>
-<router-outlet></router-outlet>
+</ul> -->
+<!-- <router-outlet></router-outlet> -->

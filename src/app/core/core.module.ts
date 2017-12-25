@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { MessageService } from './services/message.service';
 import { GlossaryService } from './services/glossary.service';
+import { ColorPaletteService } from './services/color-palette.service';
 
 /*** my own custom classes */
 import { User } from './classes/user';
@@ -25,6 +26,7 @@ import { ColorPalette } from './classes/color-palette';
     UserService,
     MessageService,
     GlossaryService,
+    ColorPaletteService,
     User,
     Glossary,
     ColorPalette,

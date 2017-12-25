@@ -1,0 +1,35 @@
+<mat-table #table [dataSource]="dataSource">
+
+      <!-- Winning Id Column -->
+      <ng-container matColumnDef="winningUserName">
+        <mat-header-cell *matHeaderCellDef> winningUserName </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.winningUserName}} </mat-cell>
+      </ng-container>
+
+      <!-- losingUserId Column -->
+      <ng-container matColumnDef="losingUserName">
+        <mat-header-cell *matHeaderCellDef> losingUserName </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.losingUserName}} </mat-cell>
+      </ng-container>
+
+      <!-- winningScore Column -->
+      <ng-container matColumnDef="winningScore">
+        <mat-header-cell *matHeaderCellDef> winningScore </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.winningScore}} </mat-cell>
+      </ng-container>
+
+      <!-- losingScore Column -->
+      <ng-container matColumnDef="losingScore">
+        <mat-header-cell *matHeaderCellDef> losingScore </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.losingScore}} </mat-cell>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.date | date}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row class="user-row" *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+    </mat-table>

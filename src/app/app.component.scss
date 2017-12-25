@@ -1,4 +1,12 @@
 /* AppComponent's private CSS styles */
+@import '../styles.scss';
+.content {
+  margin: 20px 100px 20px 100px;
+  background-color: #F8F9F9;
+  min-height: 540px;
+  padding: 10px;
+}
+
 h1 {
   font-size: 1.2em;
   color: #999;
@@ -9,21 +17,72 @@ h2 {
   margin-top: 0;
   padding-top: 0;
 }
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+// nav a {
+//   padding: 5px 10px;
+//   text-decoration: none;
+//   margin-top: 10px;
+//   display: inline-block;
+//   background-color: #eee;
+//   border-radius: 4px;
+// }
+// nav a:visited, a:link {
+//   color: #607D8B;
+// }
+// nav a:hover {
+//   color: #039be5;
+//   background-color: #CFD8DC;
+// }
+// nav a.active {
+//   color: #039be5;
+// }
+.banner-nav {
+  background-color: $color-green;
+  height: 50px;
+  .banner-link {
+    color: $color-white;
+    text-decoration-line: none;
+    text-align: center;
+    border-left-color:$color-white;
+    border-left-width: 2px;
+    border-left-style: solid;
+    padding-top: 16px;
+    a {
+      font-size: 1em;
+      color: $color-white;
+    }
+  }
+  .banner-link:hover {
+    background-color: $color-light-green;
+  }
+
+  .banner-link.active {
+    // border: 2px solid $color-dark-green;
+    background-color: $color-dark-green;
+  }
+
 }
-nav a:visited, a:link {
-  color: #607D8B;
+.white {
+  color: #FBFCFC;
 }
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
+.header-font {
+  font-size: 36px;
+  padding-top: 13px;
+
 }
-nav a.active {
-  color: #039be5;
+.blue-header {
+  background-color: $color-blue;
+  text-align: right;
+  padding-right: 20px;
 }
+.orange-header {
+  background-color: $color-orange;
+  text-align: left;
+  padding-left: 20px;
+}
+.header {
+  padding-bottom: 20px;
+  height: 150px;
+  vertical-align: middle;
+  font-size: 36px;
+}
+
