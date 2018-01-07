@@ -5,6 +5,7 @@ export * from './services/user.service';
 export * from './services/message.service';
 export * from './services/glossary.service';
 export * from './services/color-palette.service';
+export * from './services/match.service';
 
 /** CLASSES */
 export * from './classes/glossary';

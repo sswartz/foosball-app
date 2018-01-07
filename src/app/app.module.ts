@@ -11,7 +11,6 @@ import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -36,7 +35,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     AppComponent,
     MessagesComponent,
-    DashboardComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

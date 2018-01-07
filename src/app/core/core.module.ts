@@ -8,11 +8,13 @@ import { UserService } from './services/user.service';
 import { MessageService } from './services/message.service';
 import { GlossaryService } from './services/glossary.service';
 import { ColorPaletteService } from './services/color-palette.service';
+import { MatchService } from './services/match.service';
 
 /*** my own custom classes */
 import { User } from './classes/user';
 import { Glossary } from './classes/glossary';
 import { ColorPalette } from './classes/color-palette';
+import { Match } from './classes/match';
 
 @NgModule({
   imports: [
@@ -27,6 +29,7 @@ import { ColorPalette } from './classes/color-palette';
     MessageService,
     GlossaryService,
     ColorPaletteService,
+    MatchService,
     User,
     Glossary,
     ColorPalette,

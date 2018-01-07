@@ -3,11 +3,11 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users = [
-      { id: 1, name: 'Stuart Swartz', wins: 10, losses: 4, seasonWins: 2},
-      { id: 2, name: 'Evan Hickle', wins: 8, losses: 5, seasonWins: 1 },
-      { id: 3, name: 'Lenny McPhartz', wins: 0, losses: 12, seasonWins: 0 },
-      { id: 4, name: 'Tommy Baer', wins: 3, losses: 6, seasonWins: 0 },
-      { id: 5, name: 'Rob Freedy', wins: 2, losses: 3, seasonWins: 0 },
+      { id: 1, name: 'Stuart Swartz', wins: 2, losses: 0, seasonWins: 0},
+      { id: 2, name: 'Evan Hickle', wins: 1, losses: 1, seasonWins: 0 },
+      { id: 3, name: 'Lenny McPhartz', wins: 0, losses: 2, seasonWins: 0 },
+      { id: 4, name: 'Tommy Baer', wins: 0, losses: 0, seasonWins: 0 },
+      { id: 5, name: 'Rob Freedy', wins: 0, losses: 0, seasonWins: 0 },
       // { id: 16, name: 'Jack Magiera' },
       // { id: 17, name: 'Pat Wieland' },
       // { id: 18, name: 'Bobby Fischer' },
@@ -66,6 +66,17 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       }
     ];
-    return {users, glossary, colorPalette};
+  const matches = [
+  {id: 1, matchTypeId: 1, blueUserId1: 1, blueUserId2: -1, orangeUserId1: 2, orangeUserId2: 2,
+    blueScore: 6, orangeScore: 2, date: new Date(), blueColorId: 1, orangeColorId: 2,
+    blueUserName1: 'Stuart Swartz', blueUserName2: '',  orangeUserName1: '', orangeUserName2: ''},
+  {id: 2, matchTypeId: 1, blueUserId1: 3, blueUserId2: -1, orangeUserId1: 2, orangeUserId2: -1,
+    blueScore: 6, orangeScore: 4, date: new Date(), blueColorId: 3, orangeColorId: 2,
+   blueUserName1: '', orangeUserName1: '', blueUserName2: '', orangeUserName2: ''},
+  {id: 3, matchTypeId: 1, blueUserId1: 3, blueUserId2: -1, orangeUserId1: 1, orangeUserId2: -1,
+    blueScore: 6, orangeScore: 4, date: new Date(), blueColorId: 3, orangeColorId: 2,
+    blueUserName1: '', orangeUserName1: '', blueUserName2: '', orangeUserName2: ''},
+];
+    return {users, glossary, colorPalette, matches};
   }
 }

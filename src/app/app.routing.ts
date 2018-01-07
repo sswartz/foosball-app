@@ -1,11 +1,10 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from '@app/dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: '', redirectTo: 'new-game', pathMatch: 'full'},
+  {path: 'new-game', loadChildren: './new-game/new-game.module#NewGameModule'},
   {path: 'users', loadChildren: './user-feature/user-feature.module#UserFeatureModule'},
   {path: 'glossary', loadChildren: './glossary-feature/glossary-feature.module#GlossaryFeatureModule'},
   {path: 'team-colors', loadChildren: './team-colors/team-colors.module#TeamColorsModule'},
