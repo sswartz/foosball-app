@@ -10,10 +10,8 @@ export class Match {
   blueScore: number;
   orangeScore: number;
   date: Date;
-  blueUserName1: string;
-  blueUserName2: string;
-  orangeUserName1: string;
-  orangeUserName2: string;
+  blueUserNames: string;
+  orangeUserNames: string;
   constructor(
     blueScore: number,
     orangeScore: number,
@@ -32,9 +30,7 @@ export class Match {
      this.orangeUserId1 = -1;
      this.blueUserId2 = -1;
      this.orangeUserId2 = -1;
-     this.blueUserName1 = '';
-     this.orangeUserName1 = '';
-     this.blueUserName2 = '';
-     this.orangeUserName2 = '';
+     this.blueUserNames = '';
+     this.orangeUserNames = '';
   }
 }

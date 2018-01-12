@@ -67,11 +67,11 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
   const matches = [
-  {id: 1, matchTypeId: 1, blueUserId1: 1, blueUserId2: -1, orangeUserId1: 2, orangeUserId2: 2,
+  {id: 1, matchTypeId: 1, blueUserId1: 1, blueUserId2: -1, orangeUserId1: 2, orangeUserId2: -1,
     blueScore: 6, orangeScore: 2, date: new Date(), blueColorId: 1, orangeColorId: 2,
     blueUserName1: 'Stuart Swartz', blueUserName2: '',  orangeUserName1: '', orangeUserName2: ''},
   {id: 2, matchTypeId: 1, blueUserId1: 3, blueUserId2: -1, orangeUserId1: 2, orangeUserId2: -1,
-    blueScore: 6, orangeScore: 4, date: new Date(), blueColorId: 3, orangeColorId: 2,
+    blueScore: 4, orangeScore: 6, date: new Date(), blueColorId: 3, orangeColorId: 2,
    blueUserName1: '', orangeUserName1: '', blueUserName2: '', orangeUserName2: ''},
   {id: 3, matchTypeId: 1, blueUserId1: 3, blueUserId2: -1, orangeUserId1: 1, orangeUserId2: -1,
     blueScore: 6, orangeScore: 4, date: new Date(), blueColorId: 3, orangeColorId: 2,

@@ -9,6 +9,7 @@ import { MessageService } from './services/message.service';
 import { GlossaryService } from './services/glossary.service';
 import { ColorPaletteService } from './services/color-palette.service';
 import { MatchService } from './services/match.service';
+import { SeasonService } from './services/season.service';
 
 /*** my own custom classes */
 import { User } from './classes/user';
@@ -30,6 +31,7 @@ import { Match } from './classes/match';
     GlossaryService,
     ColorPaletteService,
     MatchService,
+    SeasonService,
     User,
     Glossary,
     ColorPalette,

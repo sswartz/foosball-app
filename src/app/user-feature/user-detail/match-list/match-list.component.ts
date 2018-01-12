@@ -16,7 +16,7 @@ export class MatchListComponent implements OnInit {
   userMatches: Match[];
   userWins: number;
   userLosses: number;
-  displayedColumns = [ 'blueUserName1', 'orangeUserName1', 'blueScore', 'orangeScore', 'date' ];
+  displayedColumns = [ 'blueUserNames', 'orangeUserNames', 'blueScore', 'orangeScore', 'date' ];
   dataSource;
 
 
@@ -45,13 +45,20 @@ export class MatchListComponent implements OnInit {
 
   filterForMatchesWithId(id: number): Match[] {
     return this.matches.filter((match: Match) =>
-      match.blueUserId1 === id  || match.orangeUserId1 === id
+      match.blueUserId1 === id  || match.orangeUserId1 === id || match.blueUserId2 === id || match.orangeUserId2 === id
     );
   }
   addUserNames(userMatches: Match[], users: User[]) {
     for ( let i = 0; i < userMatches.length; i++ ) {
-      userMatches[i].blueUserName1 = users.find(user => user.id === userMatches[i].blueUserId1).name;
-      userMatches[i].orangeUserName1 = users.find(user => user.id === userMatches[i].orangeUserId1).name;
+      userMatches[i].blueUserNames = users.find(user => user.id === userMatches[i].blueUserId1).name;
+      if (userMatches[i].blueUserId2 > 0) {
+        userMatches[i].blueUserNames += ', ' + users.find(user => user.id === userMatches[i].blueUserId2).name;
+
+      }
+      userMatches[i].orangeUserNames = users.find(user => user.id === userMatches[i].orangeUserId1).name;
+      if (userMatches[i].orangeUserId2 > 0) {
+        userMatches[i].orangeUserNames += ', ' + users.find(user => user.id === userMatches[i].orangeUserId2).name;
+      }
     }
     return userMatches;
 

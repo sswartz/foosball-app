@@ -16,6 +16,7 @@ export class AppComponent {
   constructor() {
     this.navList = [
       {name: 'New Game', link: 'new-game'},
+      {name: 'New Season', link: 'new-season'},
       {name: 'Users', link: 'users'},
       {name: 'Glossary', link: 'glossary'},
       {name: 'Team Colors', link: 'team-colors'}

@@ -1,15 +1,15 @@
 <mat-table #table [dataSource]="dataSource">
 
       <!-- Winning Id Column -->
-      <ng-container matColumnDef="blueUserName1">
-        <mat-header-cell *matHeaderCellDef> blueUserName </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.blueUserName1}} </mat-cell>
+      <ng-container matColumnDef="blueUserNames">
+        <mat-header-cell *matHeaderCellDef> blueUserNames </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.blueUserNames}} </mat-cell>
       </ng-container>
 
       <!-- orangeUserId Column -->
-      <ng-container matColumnDef="orangeUserName1">
-        <mat-header-cell *matHeaderCellDef> orangeUserName </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.orangeUserName1}} </mat-cell>
+      <ng-container matColumnDef="orangeUserNames">
+        <mat-header-cell *matHeaderCellDef> orangeUserNames </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.orangeUserNames}} </mat-cell>
       </ng-container>
 
       <!-- blueScore Column -->

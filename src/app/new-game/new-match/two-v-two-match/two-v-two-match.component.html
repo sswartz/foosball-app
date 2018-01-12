@@ -1,0 +1,55 @@
+<div class="1v1-container">
+    <div class="user-info">
+      <mat-form-field
+        [hideRequiredMarker]="options.value.hideRequired"
+        [floatLabel]="options.value.floatLabel">
+        <mat-select required >
+          <mat-option *ngFor="let user of users" (click)="setBlueUser1(user)" value="user">{{user.name}}</mat-option>
+        </mat-select>
+        <mat-placeholder>Select Blue User 1</mat-placeholder>
+        <mat-error *ngIf="blueUsers===orangeUsers">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="options.value.hideRequired"
+        [floatLabel]="options.value.floatLabel">
+        <mat-select required >
+          <mat-option *ngFor="let user of users" (click)="setBlueUser2(user)" value="user">{{user.name}}</mat-option>
+        </mat-select>
+        <mat-placeholder>Select Blue User 2</mat-placeholder>
+        <mat-error *ngIf="blueUsers===orangeUsers">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="options.value.hideRequired"
+        [floatLabel]="options.value.floatLabel">
+        <mat-select required>
+          <mat-option *ngFor="let user of users" (click)="setOrangeUser1(user)" value="orangeUser">{{user.name}}</mat-option>
+        </mat-select>
+        <mat-placeholder>Select Orange User 1</mat-placeholder>
+        <mat-error *ngIf="blueUser==orangeUser">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="options.value.hideRequired"
+        [floatLabel]="options.value.floatLabel">
+        <mat-select required>
+          <mat-option *ngFor="let user of users" (click)="setOrangeUser2(user)" value="orangeUser">{{user.name}}</mat-option>
+        </mat-select>
+        <mat-placeholder>Select Orange User 2</mat-placeholder>
+        <mat-error *ngIf="blueUser==orangeUser">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="game-info">
+      <mat-form-field
+        [hideRequiredMarker]="options.value.hideRequired"
+        [floatLabel]="options.value.floatLabel">
+       <input matInput placeholder="Blue Team Score" [(ngModel)]="blueTeamScore" required type="number">
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="options.value.hideRequired"
+        [floatLabel]="options.value.floatLabel">
+       <input matInput placeholder="Orange Team Score" [(ngModel)]="orangeTeamScore" required type="number">
+      </mat-form-field>
+    </div>
+    <div class="submit-button-container">
+      <button mat-raised-button (click)="submitMatchData()" class="submit-button" color="primary">Submit</button>
+    </div>
+  </div>

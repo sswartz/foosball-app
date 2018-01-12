@@ -4,7 +4,7 @@
       [hideRequiredMarker]="options.value.hideRequired"
       [floatLabel]="options.value.floatLabel">
       <mat-select required >
-        <mat-option *ngFor="let user of users" (click)="setBlueUser(user)" value="blueUser">{{user.name}}</mat-option>
+        <mat-option *ngFor="let user of users" (click)="setBlueUser(user)" value="user">{{user.name}}</mat-option>
       </mat-select>
       <mat-placeholder>Select Blue User</mat-placeholder>
       <mat-error *ngIf="blueUser===orangeUser">{{getErrorMessage()}}</mat-error>

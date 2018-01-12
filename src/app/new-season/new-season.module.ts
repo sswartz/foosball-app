@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NewGameRoutingModule } from './new-game-routing.module';
-import { NewMatchComponent } from './new-match/new-match.component';
-import { OneVOneMatchComponent } from './new-match/one-v-one-match/one-v-one-match.component';
-import { TwoVTwoMatchComponent } from './new-match/two-v-two-match/two-v-two-match.component';
+import { NewSeasonRoutingModule } from './new-season-routing.module';
+import { NewSeasonInputsComponent } from './new-season/new-season-inputs/new-season-inputs.component';
+import { NewSeasonComponent } from './new-season/new-season.component';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations/src/module';
@@ -16,21 +15,20 @@ import { MatInputModule,
          MatListModule,
          MatButtonModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NewGameRoutingModule,
+    NewSeasonRoutingModule,
     MatGridListModule,
     FlexLayoutModule,
     MatTabsModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  declarations: [NewMatchComponent, OneVOneMatchComponent, TwoVTwoMatchComponent]
+  declarations: [NewSeasonInputsComponent, NewSeasonComponent]
 })
-export class NewGameModule { }
+export class NewSeasonModule { }

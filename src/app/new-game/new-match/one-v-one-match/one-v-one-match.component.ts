@@ -58,8 +58,6 @@ export class OneVOneMatchComponent implements OnInit {
      );
      this.match.blueUserId1 = this.blueUser.id;
      this.match.orangeUserId1 = this.orangeUser.id;
-     this.match.blueUserName1 = this.blueUser.name;
-     this.match.orangeUserName1 = this.orangeUser.name;
 
      this.add(this.match);
      this.updateUsers(this.match);
@@ -81,7 +79,5 @@ export class OneVOneMatchComponent implements OnInit {
     losingUser.losses += 1;
     this.userService.updateUser(winningUser).subscribe();
     this.userService.updateUser(losingUser).subscribe();
-
-
   }
 }

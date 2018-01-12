@@ -15,7 +15,7 @@
   <nav class="banner-nav"
     fxLayout = "row"
     fxLayoutAlign="center">
-    <a *ngFor="let n of navList" class="banner-link" [class.active]="isActive(n)" (click)="select(n)" fxFlex="25%" routerLink="{{n.link}}">{{n.name}}</a>
+    <a *ngFor="let n of navList" class="banner-link" [class.active]="isActive(n)" (click)="select(n)" fxFlex="20%" routerLink="{{n.link}}">{{n.name}}</a>
   </nav>
 
   <div class="content">

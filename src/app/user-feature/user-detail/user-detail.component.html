@@ -14,7 +14,8 @@
     fxLayoutAlign="center" >
     <div class="player-info" *ngFor="let n of playerInfo" fxFlex="20%">
       <div class="player-info-title">{{n.title}}</div>
-      <div>{{n.value}}</div>
+      <div *ngIf="n.title !=='Win Percentage'">{{n.value}}</div>
+      <div *ngIf="n.title ==='Win Percentage'">{{n.value * 100 | number: '.0-2'}}%</div>
     </div>
   </div>
   <app-match-list [user]="user" [allUsers]="users"></app-match-list>

@@ -6,6 +6,7 @@ export * from './services/message.service';
 export * from './services/glossary.service';
 export * from './services/color-palette.service';
 export * from './services/match.service';
+export * from './services/season.service';
 
 /** CLASSES */
 export * from './classes/glossary';
