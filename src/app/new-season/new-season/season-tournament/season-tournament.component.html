@@ -3,67 +3,58 @@
   <mat-form-field
     [hideRequiredMarker]="options.value.hideRequired"
     [floatLabel]="options.value.floatLabel">
-  <input matInput placeholder={{playingUserTop.player.name}} [(ngModel)]="playingUserTop.tourneyScore[roundIndex]"
+  <input matInput placeholder={{playingUserTop.player.name}} [(ngModel)]="playingUserTop.tourneyScore"
     required type="number">
   </mat-form-field>
   <mat-form-field
     [hideRequiredMarker]="options.value.hideRequired"
     [floatLabel]="options.value.floatLabel">
-  <input matInput placeholder={{playingUserBottom.player.name}} [(ngModel)]="playingUserBottom.tourneyScore[roundIndex]"
+  <input matInput placeholder={{playingUserBottom.player.name}} [(ngModel)]="playingUserBottom.tourneyScore"
     required type="number">
   </mat-form-field>
   <button mat-raised-button (click)="addMatch(roundIndex)" [disabled]="!isGameFinished()" color="accent"> Add Match</button>
+  <div *ngIf="tourneyPlayers[2][0]" class="season-winner">
+    <h3> {{tourneyPlayers[2][0].player.name}} Wins the Season!</h3>
+  </div>
 </div>
-<div class="round r-of-4">
-    <div class="bracket-game" >
-      <div class="player" *ngFor="let tPlayer of tourneyPlayers; let odd=odd; let i = index"
-      [ngClass]="{'top': !odd, 'bot': odd,
-        'playing': tPlayer.tourneyPlaying[0], 'win': tPlayer.tourneyWin[0], 'loss': tPlayer.tourneyLoss[0]}">
-      {{tPlayer.player.name}}
-        <div class="score">
-          {{tPlayer.tourneyScore[0]}}
+<div class="tournament-rounds-container">
+  <div class="round r-of-4">
+      <div class="bracket-game" >
+        <div class="player" *ngFor="let tPlayer of tourneyPlayers[0]; let odd=odd; let i = index"
+        [ngClass]="{'top': !odd, 'bot': odd,
+          'playing': tPlayer.tourneyPlaying, 'win': tPlayer.tourneyWin, 'loss': tPlayer.tourneyLoss}">
+        {{tPlayer.player.name}}
+          <div class="score">
+            {{tPlayer.tourneyScore}}
+          </div>
         </div>
       </div>
-    </div>
   </div>
-  <div class="connectors r-of-2">
-    <div class="top-line"></div>
-    <div class="clear"></div>
-    <div class="bottom-line"></div>
-    <div class="clear"></div>
-    <div class="vert-line"></div>
-    <div class="clear"></div>
-    <div class="next-line"></div>
-    <div class="clear"></div>
-  </div>
+  <div class="connectors-1"> </div>
+  <div class="connectors-2"> </div>
   <div class="round r-of-2">
     <div class="bracket-game">
-      <ng-container *ngFor="let tPlayer of tourneyPlayers; let odd=odd; let i = index">
-        <div class="player"  *ngIf="tPlayer.inRound[1]"
+      <ng-container *ngFor="let tPlayer of tourneyPlayers[1]; let odd=odd; let i = index">
+        <div class="player"
           [ngClass]="{'top': !odd, 'bot': odd,
-            'playing': tPlayer.tourneyPlaying[1], 'win': tPlayer.tourneyWin[1], 'loss': tPlayer.tourneyLoss[1]}">
+            'playing': tPlayer.tourneyPlaying, 'win': tPlayer.tourneyWin, 'loss': tPlayer.tourneyLoss}">
           {{tPlayer.player.name}}
           <div class="score">
-            {{tPlayer.tourneyScore[1]}}
+            {{tPlayer.tourneyScore}}
           </div>
         </div>
       </ng-container>
     </div>
   </div>
+  <div class="connectors-2" *ngIf="tourneyPlayers[2][0]"> </div>
+  <div class="connectors-2" *ngIf="tourneyPlayers[2][0]"> </div>
   <div class="round r-of-1">
-    <div class="next-line"></div>
-  </div>
-  <div class="connectors r-of-1">
     <div class="bracket-game">
-      <ng-container *ngFor="let tPlayer of tourneyPlayers; let odd=odd; let i = index">
-        <div class="player"  *ngIf="tPlayer.inRound[2]"
-          [ngClass]="{'top': !odd, 'bot': odd,
-            'playing': tPlayer.tourneyPlaying[2], 'win': tPlayer.tourneyWin[2], 'loss': tPlayer.tourneyLoss[2]}">
+      <ng-container *ngFor="let tPlayer of tourneyPlayers[2]; let odd=odd; let i = index">
+        <div class="player win">
           {{tPlayer.player.name}}
-          <div class="score">
-            {{tPlayer.tourneyScore[2]}}
-          </div>
         </div>
       </ng-container>
     </div>
   </div>
+</div>

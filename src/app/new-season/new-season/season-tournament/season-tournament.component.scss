@@ -1,11 +1,19 @@
+.tournament-rounds-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
 .round {
-  float: left;
 }
 .round.r-of-4 {
 
 }
 .round.r-of-2 {
-  margin-top: 25px;
+  // margin-top: 25px;
+}
+.round.r-of-1 {
+  // margin-top: 35px;
 }
 .bracket-game {
   max-width: 250px;
@@ -14,6 +22,8 @@
   min-width: 175px;
   border: 1px solid #AAA;
   padding-left: 10px;
+  height: 30px;
+  line-height: 30px;
 }
 .player.top {
   border-radius: 3px 3px 0 0;
@@ -40,36 +50,18 @@
 .player.playing {
   background-color: #FFE47F;
 }
-.connectors {
-  float: left;
-  min-width: 35px;
-}
-.connectors.r-of-2 .top-line {
-  position: relative;
-  top: 30px;
-  width: 17px;
-  border: 1px solid #AAA;
-}
-.connectors.r-of-2 .bottom-line {
-  position: relative;
-  top: 81px;
-  width: 17px;
-  border: 1px solid #AAA;
-}
-.connectors.r-of-2 .vert-line {
-  position: relative;
-  top: 26px;
-  left: -16px;
-  height: 55px;
+.connectors-1 {
+  min-width: 30px;
+  height: 72px;
   border-right: 2px solid #AAA;
+  border-top: 2px solid #AAA;
+  border-bottom: 2px solid #AAA;
 }
-.connectors.r-of-2 .next-line {
-  position: relative;
-  top: -4px;
-  left: 17px;
-  width: 17px;
+.connectors-2 {
+  min-width: 30px;
   border: 1px solid #AAA;
 }
-.clear {
-  clear: both;
+.season-winner {
+  display: inline-block;
+  margin-left: 30px;
 }

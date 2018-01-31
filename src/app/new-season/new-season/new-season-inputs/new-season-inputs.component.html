@@ -27,9 +27,9 @@
       <button mat-raised-button (click)="setInitialMatchup()" [disabled]="initialMatchupsSet" color="accent"> set Initial matchup</button>
       <button mat-raised-button (click)="addMatch()" [disabled]="!isGameFinished() || allMatchesPlayed || gameFinished" color="accent"> Add Match</button>
       <button mat-raised-button (click)="setNextMatchup()" [disabled]="allMatchesPlayed || !gameFinished" color="primary"> set Next matchup</button>
-    </div>
-    <div *ngIf="allMatchesPlayed">
-      <h2>TOURNAMENT TIME</h2>
+      <div *ngIf="allMatchesPlayed" class="tourney-time">
+        <h2 class="tourney">TOURNAMENT TIME</h2>
+      </div>
     </div>
     <div *ngIf="initialMatchupsSet">
       <div class="setup-container">

@@ -7,7 +7,7 @@ export class TourneyPlayer {
   tourneyPlaying: boolean;
   inRound: boolean;
 
-  constructor(player: User, rounds: number) {
+  constructor(player: User) {
     this.player = player;
     this.tourneyWin = false;
     this.tourneyLoss = false;
