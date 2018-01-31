@@ -1,4 +1,7 @@
-<p>
-  new-season works!
-</p>
-<app-new-season-inputs></app-new-season-inputs>
+<app-new-season-inputs (playerChanged)="playerChanged($event)" (tourneyTime)="tourneyTime($event)"></app-new-season-inputs>
+<div *ngIf="players">
+  <app-season-table [userData]="players"></app-season-table>
+</div>
+<div *ngIf="tourneyPlayers">
+  <app-season-tournament [tourneyData]="tourneyPlayers"></app-season-tournament>
+</div>

@@ -6,4 +6,8 @@ export class PlayerPosition {
   // orangePlayer2: User;
   players: User[];
   bench: User[];
+  constructor() {
+    this.players = [];
+    this.bench = [];
+  }
 }

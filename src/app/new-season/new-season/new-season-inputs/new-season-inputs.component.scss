@@ -1,0 +1,41 @@
+@import '../../../../styles.scss';
+.player-container {
+  display: inline-flex;
+}
+.orange-players {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  .orange-player {
+    color: $color-orange;
+  }
+  .player-1 {
+    width: 185px;
+    text-align: right;
+  }
+}
+.blue-players {
+  display: flex;
+  flex-direction: row;
+  .blue-player {
+    color: $color-blue;
+  }
+  .player-1 {
+    width: 175px;
+  }
+  .player-2 {
+  }
+}
+
+.setup-container {
+  width: 405px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.foosball-img-container {
+  text-align: center;
+  .foosball-img {
+    width: 100%;
+  }
+
+}

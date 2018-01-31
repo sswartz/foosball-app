@@ -14,7 +14,10 @@ import { MatInputModule,
          MatSelectModule,
          MatListModule,
          MatButtonModule } from '@angular/material';
+import { MatTableModule, MatSortModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SeasonTableComponent } from './season-table/season-table.component';
+import { SeasonTournamentComponent } from './new-season/season-tournament/season-tournament.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +31,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
+    MatSortModule,
   ],
-  declarations: [NewSeasonInputsComponent, NewSeasonComponent]
+  declarations: [NewSeasonInputsComponent, NewSeasonComponent, SeasonTableComponent, SeasonTournamentComponent]
 })
 export class NewSeasonModule { }

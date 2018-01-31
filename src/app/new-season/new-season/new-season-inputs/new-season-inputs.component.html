@@ -10,5 +10,56 @@
       <mat-placeholder>Select Number of Players</mat-placeholder>
     </mat-form-field>
 
-  </div>
+    <div *ngIf="numbers">
+      <div *ngFor="let n of numbers" class="player-container">
+      <mat-form-field
+        [hideRequiredMarker]="options.value.hideRequired"
+        [floatLabel]="options.value.floatLabel">
+        <mat-select required >
+          <mat-option *ngFor="let user of users" (click)="setUser(user, n)" value="user">{{user.name}}</mat-option>
+        </mat-select>
+        <mat-placeholder>Select Player {{n + 1}}</mat-placeholder>
+      </mat-form-field>
+      </div>
+    </div>
+
+    <div *ngIf="allPlayersSet()">
+      <button mat-raised-button (click)="setInitialMatchup()" [disabled]="initialMatchupsSet" color="accent"> set Initial matchup</button>
+      <button mat-raised-button (click)="addMatch()" [disabled]="!isGameFinished() || allMatchesPlayed || gameFinished" color="accent"> Add Match</button>
+      <button mat-raised-button (click)="setNextMatchup()" [disabled]="allMatchesPlayed || !gameFinished" color="primary"> set Next matchup</button>
+    </div>
+    <div *ngIf="allMatchesPlayed">
+      <h2>TOURNAMENT TIME</h2>
+    </div>
+    <div *ngIf="initialMatchupsSet">
+      <div class="setup-container">
+        <div class="orange-players">
+          <div class="orange-player player-2">{{playerPositions.players[3].name}}</div>
+          <div class="orange-player player-1">{{playerPositions.players[2].name}}</div>
+        </div>
+        <div class="foosball-img-container">
+          <img class="foosball-img" src="../../../../assets/foosball-table.jpg">
+        </div>
+        <div class="blue-players">
+          <div class="blue-player player-1">{{playerPositions.players[0].name}}</div>
+          <div class="blue-player player-2">{{playerPositions.players[1].name}}</div>
+        </div>
+        <div>Bench:
+          <div *ngFor="let player of playerPositions.bench">{{player.name}} </div>
+        </div>
+      </div>
+        <div class="game-info">
+          <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel">
+          <input matInput placeholder="Blue Team Score" [(ngModel)]="blueTeamScore" required type="number">
+          </mat-form-field>
+          <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel">
+          <input matInput placeholder="Orange Team Score" [(ngModel)]="orangeTeamScore" required type="number">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
 </div>

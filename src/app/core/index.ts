@@ -15,3 +15,5 @@ export * from './classes/tile';
 export * from './classes/color-palette';
 export * from './classes/color-palette-row';
 export * from './classes/match';
+export * from './classes/tourney-position';
+export * from './classes/tourney-player';

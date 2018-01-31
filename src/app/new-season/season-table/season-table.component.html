@@ -1,0 +1,54 @@
+<mat-table #table [dataSource]="dataSource" matSort>
+
+      <!-- Winning Id Column -->
+      <!-- <ng-container matColumnDef="rank">
+        <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{player.rank}} </mat-cell>
+      </ng-container> -->
+
+      <!-- orangeUserId Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <!-- blueScore Column -->
+      <ng-container matColumnDef="inSeasonPoints">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Points </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.inSeasonPoints}} </mat-cell>
+      </ng-container>
+
+      <!-- orangeScore Column -->
+      <ng-container matColumnDef="inSeasonWins">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Wins </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.inSeasonWins}} </mat-cell>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="inSeasonLosses">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Losses </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.inSeasonLosses}} </mat-cell>
+      </ng-container>
+
+      <!-- PointsFor Column -->
+      <ng-container matColumnDef="inSeasonGoalsFor">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Goals For </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.inSeasonGoalsFor}} </mat-cell>
+      </ng-container>
+
+      <!-- PointsAgainst Column -->
+      <ng-container matColumnDef="inSeasonGoalsAgainst">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Goals Against </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.inSeasonGoalsAgainst}} </mat-cell>
+      </ng-container>
+
+      <!-- Differential Column -->
+      <ng-container matColumnDef="inSeasonGoalDifferential">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Differential </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.inSeasonGoalDifferential }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row class="player-row" *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+    </mat-table>
+

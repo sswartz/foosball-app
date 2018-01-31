@@ -10,8 +10,8 @@ export class Match {
   blueScore: number;
   orangeScore: number;
   date: Date;
-  blueUserNames: string;
-  orangeUserNames: string;
+  blueUserNames?: string;
+  orangeUserNames?: string;
   constructor(
     blueScore: number,
     orangeScore: number,

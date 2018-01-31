@@ -17,7 +17,7 @@ export class TeamColorsListComponent implements OnInit {
   constructor(private colorPaletteService: ColorPaletteService) { }
 
   ngOnInit() {
-    this.myTabs = [[], []];
+    this.myTabs = [[], [], [], [], []];
     this.setColorPalettes();
   }
 
@@ -26,11 +26,7 @@ export class TeamColorsListComponent implements OnInit {
       .subscribe(colorPalettes => {
         this.myColorPalettes = colorPalettes;
         for (let i = 0; i < this.myColorPalettes.length; i++) {
-          if (this.myColorPalettes[i].page === 1) {
-            this.myTabs[0].push(this.myColorPalettes[i]);
-          } else {
-            this.myTabs[1].push(this.myColorPalettes[i]);
-          }
+            this.myTabs[this.myColorPalettes[i].page - 1].push(this.myColorPalettes[i]);
         }
        }
       );
