@@ -155,7 +155,7 @@ export class InMemoryDataService implements InMemoryDbService {
         id: 12,
         title: 'Cotton Candies',
         page: 3,
-        remoteNumber:91,
+        remoteNumber: 91,
         colors: [
           '#375166', '#375166', '#375166', '#375166',
           '#BE2A28', '#BE2A28', '#375166', '#375166',
