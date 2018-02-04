@@ -89,7 +89,7 @@ export class SeasonTournamentComponent implements OnChanges {
     }
   }
 
-  isGameFinished(round: number): boolean {
+  isGameFinished(): boolean {
     let isGameFinished = false;
     if (this.playingUserTop.tourneyScore >= 6 || this.playingUserBottom.tourneyScore >= 6) { isGameFinished = true; }
     return isGameFinished;
