@@ -8,6 +8,8 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 3, name: 'McPhartz', wins: 0, losses: 2, seasonWins: 0 },
       { id: 4, name: 'Tommy Baer', wins: 0, losses: 0, seasonWins: 0 },
       { id: 5, name: 'Rob Freedy', wins: 0, losses: 0, seasonWins: 0 },
+      { id: 6, name: 'Ryan Fish', wins: 0, losses: 0, seasonWins: 0 },
+      { id: 7, name: 'Jack Toscano', wins: 0, losses: 0, seasonWins: 0 },
       // { id: 16, name: 'Jack Magiera' },
       // { id: 17, name: 'Pat Wieland' },
       // { id: 18, name: 'Bobby Fischer' },

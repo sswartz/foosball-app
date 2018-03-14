@@ -5,6 +5,12 @@
   background-color: #F8F9F9;
   min-height: 540px;
   padding: 10px;
+
+  @media screen and (max-width: $break-small) {
+    margin: 5px;
+
+  }
+
 }
 
 h1 {
@@ -50,6 +56,10 @@ h2 {
       font-size: 1em;
       color: $color-white;
     }
+    @media screen and (max-width: $break-small) {
+      padding-top: 12px;
+      line-height: 14px;
+    }
   }
   .banner-link:hover {
     background-color: $color-light-green;
@@ -84,5 +94,9 @@ h2 {
   height: 150px;
   vertical-align: middle;
   font-size: 36px;
+
+  @media screen and (max-width: $break-small) {
+    height: 125px;
+  }
 }
 
