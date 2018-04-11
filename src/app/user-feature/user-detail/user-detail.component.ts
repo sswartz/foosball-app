@@ -27,7 +27,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   getUser(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.userService.getUser(id)
       .subscribe(user => {
         this.user = user;
@@ -40,7 +40,7 @@ export class UserDetailComponent implements OnInit {
           {title: 'Wins', value: user.wins},
           {title: 'Losses', value: user.losses},
           {title: 'Win Percentage', value: winPercentage },
-          {title: 'Season Wins', value: user.seasonWins}
+          {title: 'Season Wins', value: user.seasonwins}
         ];
        }
       );

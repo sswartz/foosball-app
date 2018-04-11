@@ -4,14 +4,19 @@ import { Match } from '../classes/match';
 import { TourneyPosition } from './../classes/tourney-position';
 import { PlayerPosition } from '../classes/player-position';
 import { MatchService } from './match.service';
+import { UserService } from './user.service';
 
 const PLAYER_TOTAL = 4;
 const OVERTIME = 5;
 @Injectable()
 export class SeasonService {
 
-  constructor(private matchService: MatchService) {
+  constructor(
+    private matchService: MatchService,
+    private userService: UserService
+  ) {
     this.matchService = matchService;
+    this.userService = userService;
    }
 
   /** PUBLIC METHODS */
@@ -101,12 +106,22 @@ export class SeasonService {
         this.addSeasonGoals(this.getBluePlayers(players), blueScore, orangeScore);
       }
     }
+    this.getBluePlayers(players).forEach(player => {
+      this.updateUser(player);
+    });
+    this.getOrangePlayers(players).forEach(player => {
+      this.updateUser(player);
+    });
+
   }
   private getBluePlayers(player: User[]): User[] {
     return player.slice(0, 2);
   }
   private getOrangePlayers(player: User[]): User[] {
     return player.slice(2);
+  }
+  private updateUser(player: User) {
+    this.userService.updateUser(player).subscribe();
   }
   private addSeasonGoals(players: User[], teamGoals: number, opponentGoals: number) {
     players.forEach((player: User) => {
@@ -118,17 +133,20 @@ export class SeasonService {
   private addSeasonWin(players: User[]): void {
     players.forEach((player: User) => {
       player.inSeasonWins++;
+      player.wins++;
       player.inSeasonPoints = player.inSeasonPoints + 3;
     });
   }
   private addSeasonLoss(players: User[]) {
     players.forEach((player: User) => {
       player.inSeasonLosses++;
+      player.losses++;
     });
   }
   private addSeasonOTLoss(players: User[]) {
     players.forEach((player: User) => {
       player.inSeasonLosses++;
+      player.losses++;
       player.inSeasonPoints++;
     });
   }

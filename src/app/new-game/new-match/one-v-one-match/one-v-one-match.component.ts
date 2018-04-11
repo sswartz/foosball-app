@@ -51,13 +51,15 @@ export class OneVOneMatchComponent implements OnInit {
     this.match = new Match(
       this.blueTeamScore,
       this.orangeTeamScore,
-      1, // blueColorId
-      2, // orangeColorId
+      '1', // blueColorId
+      '2', // orangeColorId
       new Date(),
       1 // matchTypeId
      );
      this.match.blueUserId1 = this.blueUser.id;
      this.match.orangeUserId1 = this.orangeUser.id;
+     this.match.blueUserNames = this.blueUser.name;
+     this.match.orangeUserNames = this.orangeUser.name;
 
      this.add(this.match);
      this.updateUsers(this.match);

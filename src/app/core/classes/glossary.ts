@@ -1,5 +1,5 @@
 export class Glossary {
-  id: number;
+  id: string;
   name: string;
   description: string;
 }

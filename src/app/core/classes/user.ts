@@ -1,9 +1,9 @@
 export class User {
-  id: number;
+  id: string;
   name: string;
   wins: number;
   losses: number;
-  seasonWins: number;
+  seasonwins: number;
   seasonIndex?: number;
   benchTime?: number;
   inSeasonWins?: number;

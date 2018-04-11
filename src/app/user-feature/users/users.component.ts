@@ -11,7 +11,7 @@ import { UserService } from '@app/core';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  dataSource;
+  dataSource; // = new MatTableDataSource([]);
   displayedColumns = ['name', 'wins', 'losses', 'seasonWins'];
 
   constructor(private userService: UserService) { }
@@ -22,16 +22,21 @@ export class UsersComponent implements OnInit {
 
   getUsers(): void {
     this.userService.getUsers()
-      .subscribe(users => {
-        this.users = users;
-        this.dataSource = new MatTableDataSource(users);
+      .subscribe(httpUsers => {
+        this.users = httpUsers;
+        this.dataSource = new MatTableDataSource(this.users);
        } );
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.userService.addUser({ name } as User)
+    const newUser = new User();
+    newUser.name = name;
+    newUser.wins = 0;
+    newUser.losses = 0;
+    newUser.seasonwins = 0;
+    this.userService.addUser(newUser)
       .subscribe(user => {
         this.users.push(user);
       });

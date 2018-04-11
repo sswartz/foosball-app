@@ -1,0 +1,13 @@
+  <mat-form-field
+    [hideRequiredMarker]="options.value.hideRequired"
+    [floatLabel]="options.value.floatLabel">
+    <input matInput placeholder="Item Name" [(ngModel)]="glossaryItem.name"
+  >
+  </mat-form-field>
+  <mat-form-field
+    [hideRequiredMarker]="options.value.hideRequired"
+    [floatLabel]="options.value.floatLabel">
+    <input matInput placeholder="Item Description" [(ngModel)]="glossaryItem.description"
+  >
+  </mat-form-field>
+<button (click)="addItem()">Add Item</button>

@@ -10,13 +10,17 @@ import { User } from '@app/core';
 import { MessageService } from './message.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    'MY_CUSTOM_HEADER': 'MY_CUSTOM_HEADER_VALUE',
+    'Content-Type': 'application/json',
+    'X-Api-Key': '2E94GxwMoP7m2PWFIZ1NwaP5gbYXNmKi1UCO8zCi'
+   })
 };
 
 @Injectable()
 export class MatchService {
 
-  private matchesUrl = 'api/matches'; // URL to web api
+  private matchesUrl = 'https://ciqcgq1qfk.execute-api.us-east-2.amazonaws.com/dev/matches'; // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -26,7 +30,7 @@ export class MatchService {
 
   createMatchObj(blueScore: number, orangeScore: number, players: User[]): Match {
     if (players.length === 4) {
-      const match = new Match(blueScore, orangeScore, 1, 2, new Date(), 2);
+      const match = new Match(blueScore, orangeScore, '1', '2', new Date(), 2);
       match.blueUserId1 = players[0].id;
       match.blueUserId2 = players[1].id;
       match.orangeUserId1 = players[2].id;
@@ -35,15 +39,15 @@ export class MatchService {
       match.orangeUserNames = `${players[2].name} and ${players[3].name}`;
       return match;
     } else if (players.length === 3) {
-      const match = new Match(blueScore, orangeScore, 1, 2, new Date(), 3);
+      const match = new Match(blueScore, orangeScore, '1', '2', new Date(), 3);
       match.blueUserId1 = players[0].id;
       match.blueUserId2 = players[1].id;
       match.orangeUserId1 = players[2].id;
       match.blueUserNames = `${players[0].name} and ${players[1].name}`;
       match.orangeUserNames = `${players[2].name}`;
       return match;
-    } else if (players.length === 1) {
-      const match = new Match(blueScore, orangeScore, 1, 2, new Date(), 1);
+    } else if (players.length === 2) {
+      const match = new Match(blueScore, orangeScore, '1', '2', new Date(), 1);
       match.blueUserId1 = players[0].id;
       match.orangeUserId1 = players[1].id;
       match.blueUserNames = `${players[0].name}`;
@@ -55,7 +59,7 @@ export class MatchService {
   /** GET matches from the server */
   getMatches(): Observable<Match[]> {
     this.messageService.add('MatchService: fetched matches');
-    return this.http.get<Match[]>(this.matchesUrl)
+    return this.http.get<Match[]>(this.matchesUrl, httpOptions)
       .pipe(
         tap(matches => this.log(`fetched matches`)),
         catchError(this.handleError('gotMatches', []))
@@ -65,7 +69,7 @@ export class MatchService {
   /** GET match by id. Return `undefined` when id not found */
   getMatchNo404<Data>(id: number): Observable<Match> {
     const url = `${this.matchesUrl}/?id=${id}`;
-    return this.http.get<Match[]>(url).pipe(
+    return this.http.get<Match[]>(url, httpOptions).pipe(
       map(matches => matches[0]), // returns a {0|1} element array
       tap( u => {
         const outcome = u ? `fetched` : `did not find`;
@@ -77,7 +81,7 @@ export class MatchService {
 
   getMatch(id: number): Observable<Match> {
     const url = `${this.matchesUrl}/?id=${id}`;
-    return this.http.get<Match>(url).pipe(
+    return this.http.get<Match>(url, httpOptions).pipe(
       tap(_ => this.log(`fetched match id=${id}`)),
       catchError(this.handleError<Match>(`getMatch id=${id}`))
     );

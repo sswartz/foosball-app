@@ -43,7 +43,7 @@ export class MatchListComponent implements OnInit {
       });
   }
 
-  filterForMatchesWithId(id: number): Match[] {
+  filterForMatchesWithId(id: string): Match[] {
     return this.matches.filter((match: Match) =>
       match.blueUserId1 === id  || match.orangeUserId1 === id || match.blueUserId2 === id || match.orangeUserId2 === id
     );
@@ -51,12 +51,12 @@ export class MatchListComponent implements OnInit {
   addUserNames(userMatches: Match[], users: User[]) {
     for ( let i = 0; i < userMatches.length; i++ ) {
       userMatches[i].blueUserNames = users.find(user => user.id === userMatches[i].blueUserId1).name;
-      if (userMatches[i].blueUserId2 > 0) {
+      if (userMatches[i].blueUserId2.length > 3) {
         userMatches[i].blueUserNames += ', ' + users.find(user => user.id === userMatches[i].blueUserId2).name;
 
       }
       userMatches[i].orangeUserNames = users.find(user => user.id === userMatches[i].orangeUserId1).name;
-      if (userMatches[i].orangeUserId2 > 0) {
+      if (userMatches[i].orangeUserId2.length > 3) {
         userMatches[i].orangeUserNames += ', ' + users.find(user => user.id === userMatches[i].orangeUserId2).name;
       }
     }
@@ -64,12 +64,12 @@ export class MatchListComponent implements OnInit {
 
 
   }
-  filterForWins(id: number): number {
+  filterForWins(id: string): number {
     return this.matches.filter((match: Match) =>
       match.blueUserId1 === id
     ).length;
   }
-  filterForLosses(id: number): number {
+  filterForLosses(id: string): number {
     return this.matches.filter((match: Match) =>
       match.orangeUserId1 === id
     ).length;

@@ -1,12 +1,12 @@
 export class Match {
-  id: number;
+  id: string;
   matchTypeId: number;
-  blueUserId1: number;
-  blueUserId2: number;
-  blueColorId: number;
-  orangeUserId1: number;
-  orangeUserId2: number;
-  orangeColorId: number;
+  blueUserId1: string;
+  blueUserId2?: string;
+  blueColorId: string;
+  orangeUserId1: string;
+  orangeUserId2?: string;
+  orangeColorId: string;
   blueScore: number;
   orangeScore: number;
   date: Date;
@@ -15,8 +15,8 @@ export class Match {
   constructor(
     blueScore: number,
     orangeScore: number,
-    blueColorId: number,
-    orangeColorId: number,
+    blueColorId: string,
+    orangeColorId: string,
     date: Date,
     matchTypeId: number,
    ) {
@@ -26,10 +26,10 @@ export class Match {
      this.orangeColorId = orangeColorId;
      this.date = date;
      this.matchTypeId = matchTypeId;
-     this.blueUserId1 = -1;
-     this.orangeUserId1 = -1;
-     this.blueUserId2 = -1;
-     this.orangeUserId2 = -1;
+     this.blueUserId1 = '-1';
+     this.orangeUserId1 = '-1';
+     this.blueUserId2 = '-1';
+     this.orangeUserId2 = '-1';
      this.blueUserNames = '';
      this.orangeUserNames = '';
   }

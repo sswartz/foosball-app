@@ -58,8 +58,8 @@ export class TwoVTwoMatchComponent implements OnInit {
     this.match = new Match(
       this.blueTeamScore,
       this.orangeTeamScore,
-      1, // blueColorId
-      2, // orangeColorId
+      '1', // blueColorId
+      '2', // orangeColorId
       new Date(),
       1 // matchTypeId
      );

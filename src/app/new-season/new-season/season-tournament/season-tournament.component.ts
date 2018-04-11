@@ -2,6 +2,8 @@ import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { User, TourneyPosition, TourneyPlayer } from '@app/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map, filter } from 'rxjs/operators';
+import { UserService } from '@app/core';
+import { MatchService } from '@app/core';
 
 @Component({
   selector: 'app-season-tournament',
@@ -16,16 +18,21 @@ export class SeasonTournamentComponent implements OnChanges {
   playingUserTop: TourneyPlayer;
   playingUserBottom: TourneyPlayer;
   roundIndex: number;
+  updatedSeasonWinner: boolean;
 
 
   options: FormGroup;
   constructor(
     private fb: FormBuilder,
+    private userService: UserService,
+    private matchService: MatchService,
   ) {
     this.options = fb.group({
       hideRequired: true,
       floatLevel: 'auto'
     });
+    this.userService = userService;
+    this.matchService = matchService;
   }
   initializeTourneyPlayers() {
     this.tourneyPlayers = [[], [], []];
@@ -57,17 +64,29 @@ export class SeasonTournamentComponent implements OnChanges {
     // LOSER: tourney loss this round
     if (this.playingUserTop.tourneyScore > this.playingUserBottom.tourneyScore) {
       this.playingUserTop.tourneyWin = true;
+      this.playingUserTop.player.wins++;
       this.tourneyPlayers[round + 1].push(new TourneyPlayer(this.playingUserTop.player));
       this.playingUserTop.inRound = false;
       this.playingUserBottom.tourneyLoss = true;
+      this.playingUserBottom.player.losses++;
       this.playingUserBottom.inRound = false;
     } else {
       this.playingUserBottom.tourneyWin = true;
+      this.playingUserBottom.player.wins++;
       this.tourneyPlayers[round + 1].push(new TourneyPlayer(this.playingUserBottom.player));
       this.playingUserBottom.inRound = false;
       this.playingUserTop.inRound = false;
       this.playingUserTop.tourneyLoss = true;
+      this.playingUserTop.player.losses++;
     }
+    this.userService.updateUser(this.playingUserTop.player).subscribe();
+    this.userService.updateUser(this.playingUserBottom.player).subscribe();
+    this.matchService.addMatch(
+      this.matchService.createMatchObj(
+        this.playingUserTop.tourneyScore,
+        this.playingUserBottom.tourneyScore,
+        [this.playingUserTop.player, this.playingUserBottom.player],
+      )).subscribe();
     // both users no longer currently playing
     this.playingUserTop.tourneyPlaying = false;
     this.playingUserBottom.tourneyPlaying = false;
@@ -91,8 +110,17 @@ export class SeasonTournamentComponent implements OnChanges {
 
   isGameFinished(): boolean {
     let isGameFinished = false;
-    if (this.playingUserTop.tourneyScore >= 6 || this.playingUserBottom.tourneyScore >= 6) { isGameFinished = true; }
+    if (this.playingUserTop.tourneyScore >= 6 || this.playingUserBottom.tourneyScore >= 6) {
+      isGameFinished = true;
+      if (this.tourneyPlayers[2][0] && !this.updatedSeasonWinner) {this.isTourneyFinished(); }
+    }
     return isGameFinished;
+  }
+  isTourneyFinished() {
+      this.updatedSeasonWinner = true;
+      const winningPlayer = this.tourneyPlayers[2][0].player;
+      winningPlayer.seasonwins++;
+      this.userService.updateUser(winningPlayer).subscribe();
   }
 
   ngOnChanges(changes: SimpleChanges) {

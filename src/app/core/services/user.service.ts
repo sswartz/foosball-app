@@ -9,13 +9,17 @@ import { User } from '../classes/user';
 import { MessageService } from './message.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'MY_CUSTOM_HEADER': 'MY_CUSTOM_HEADER_VALUE',
+    'Content-Type': 'application/json',
+    'X-Api-Key': '2E94GxwMoP7m2PWFIZ1NwaP5gbYXNmKi1UCO8zCi'
+   })
 };
 
 @Injectable()
 export class UserService {
 
-  private usersUrl = 'api/users'; // URL to web api
+  private usersUrl = 'https://845h43swa5.execute-api.us-east-2.amazonaws.com/dev/users'; // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -25,7 +29,7 @@ export class UserService {
   /** GET users from the server */
   getUsers(): Observable<User[]> {
     this.messageService.add('UserService: fetched users');
-    return this.http.get<User[]>(this.usersUrl)
+    return this.http.get<User[]>(this.usersUrl, httpOptions)
       .pipe(
         tap(users => this.log(`fetched users`)),
         catchError(this.handleError('getUsers', []))
@@ -33,9 +37,9 @@ export class UserService {
   }
 
   /** GET user by id. Return `undefined` when id not found */
-  getUserNo404<Data>(id: number): Observable<User> {
+  getUserNo404<Data>(id: string): Observable<User> {
     const url = `${this.usersUrl}/?id=${id}`;
-    return this.http.get<User[]>(url).pipe(
+    return this.http.get<User[]>(url, httpOptions).pipe(
       map(users => users[0]), // returns a {0|1} element array
       tap(u => {
         const outcome = u ? `fetched` : `did not find`;
@@ -46,9 +50,9 @@ export class UserService {
   }
 
   /** GET user by id. Will 404 if id not found  */
-  getUser(id: number): Observable<User> {
+  getUser(id: string): Observable<User> {
     const url = `${this.usersUrl}/${id}`;
-    return this.http.get<User>(url).pipe(
+    return this.http.get<User>(url, httpOptions).pipe(
       tap(_ => this.log(`fetched user id=${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
@@ -60,7 +64,7 @@ export class UserService {
       // if not search term, return empty user array.
       return of([]);
     }
-    return this.http.get<User[]>(`api/users/?name=${term}`).pipe(
+    return this.http.get<User[]>(`api/users/?name=${term}`, httpOptions).pipe(
       tap(_ => this.log(`found users matching "${term}"`)),
       catchError(this.handleError<User[]>('searchUsers', []))
     );
@@ -78,8 +82,8 @@ export class UserService {
   }
 
   /** DELETE: delete the user from the server */
-  deleteUser (user: User | number): Observable<User> {
-    const id = typeof user === 'number' ? user : user.id;
+  deleteUser (user: User | string): Observable<User> {
+    const id = typeof user === 'string' ? user : user.id;
     const url = `${this.usersUrl}/${id}`;
 
     return this.http.delete<User>(url, httpOptions).pipe(

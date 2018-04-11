@@ -43,6 +43,9 @@ export class NewSeasonInputsComponent implements OnInit {
       hideRequired: true,
       floatLevel: 'auto'
     });
+    this.userService = userService;
+    this.matchService = matchService;
+    this.seasonService = seasonService;
   }
 
   ngOnInit() {
